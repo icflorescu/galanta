@@ -48,5 +48,17 @@
 			"email": "ionut.florescu@gmail.com",
 			"url": "https://github.com/icflorescu"
 		}
+	],
+	"keywords": [
+		"ui",
+		"library",
+		"svelte",
+		"sveltekit",
+		"minimal",
+		"styling",
+		"pretty",
+		"typescript",
+		"javascript",
+		"css"
 	]
 }
