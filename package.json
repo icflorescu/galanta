@@ -1,6 +1,6 @@
 {
 	"name": "galanta",
-	"description": "The elegant minimal Svelte UI library",
+	"description": "A minimal UI library to make your Svelte apps look stylish",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "svelte-kit dev",
