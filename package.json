@@ -6,7 +6,7 @@
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
 		"package": "svelte-kit package",
-		"publish": "npm publish ./package",
+		"publish": "npm version patch && npm run package && npm publish ./package && git push && git push --tags",
 		"preview": "svelte-kit preview",
 		"prepare": "svelte-kit sync",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
