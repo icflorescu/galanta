@@ -1,10 +1,25 @@
 <script lang="ts">
   import Button from '$lib/Button.svelte';
+  import Bulb from '$lib/icons/Bulb.svelte';
+  import BulbOff from '$lib/icons/BulbOff.svelte';
+  import Eyeglass from '$lib/icons/Eyeglass.svelte';
   import '$lib/normalize.css';
   import ThemeProvider from '$lib/ThemeProvider.svelte';
   import './__layout.css';
 
   let theme: 'light' | 'dark' = 'light';
+  let flashThemeTimeout: number | undefined;
+
+  const handleFlashThemeClick = () => {
+    if (flashThemeTimeout) {
+      clearInterval(flashThemeTimeout);
+      flashThemeTimeout = undefined;
+    } else {
+      flashThemeTimeout = setInterval(() => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+      }, 50) as unknown as number;
+    }
+  };
 </script>
 
 <ThemeProvider
@@ -25,7 +40,22 @@
       <li><a href="/">Buttons</a></li>
       <li><a href="/icons">Icons</a></li>
     </ul>
-    <Button on:click={() => (theme = theme === 'light' ? 'dark' : 'light')}>Change theme</Button>
+    <div>
+      <Button on:click={() => (theme = theme === 'light' ? 'dark' : 'light')}>
+        <svelte:fragment slot="prefix">
+          {#if theme === 'light'}
+            <BulbOff />
+          {:else}
+            <Bulb />
+          {/if}
+        </svelte:fragment>
+        Change theme
+      </Button>
+      <Button on:click={handleFlashThemeClick}>
+        <Eyeglass slot="prefix" />
+        Flash theme
+      </Button>
+    </div>
   </nav>
 </header>
 <main>
