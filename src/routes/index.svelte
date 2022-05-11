@@ -1,6 +1,8 @@
 <script lang="ts">
   import Button from '$lib/Button.svelte';
   import Group from '$lib/Group.svelte';
+  import ChevronRight from '$lib/icons/ChevronRight.svelte';
+  import Heart from '$lib/icons/Heart.svelte';
 
   let theme: 'light' | 'dark' = 'light';
 </script>
@@ -34,8 +36,8 @@
 <div class="full">
   <div style:width="760px">
     <Button variant="primary" fullWidth>
-      <span slot="prefix">💕</span>
-      <span slot="suffix">👌</span>
+      <Heart slot="prefix" />
+      <ChevronRight slot="suffix" />
       Full width with prefix and suffix
     </Button>
   </div>
