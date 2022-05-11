@@ -27,36 +27,56 @@
         <h1>Welcome to GALANTA</h1>
         <h2>This is an H2</h2>
         <h3>This is an H3</h3>
-
         <Button on:click={() => (theme = theme === 'light' ? 'dark' : 'light')}>Change theme</Button
         >
+        <h3>BUTTONS</h3>
+        <h4>TYPES</h4>
+        <Button variant="primary" type="submit">Submit</Button>
+        <Button variant="primary" type="reset">Reset</Button>
+        <Button variant="primary">Button</Button>
+        <Button variant="primary" href="https://swapp.ro" target="_blank">Link</Button>
+        <h4>VARIANTS</h4>
+        <Button>Default</Button>
         <Button disabled>Disabled</Button>
-        <Button variant="primary" href="https://swapp.ro" target="_blank" uppercase>Primary</Button>
-        <Button variant="primary" disabled>Primary disabled</Button>
-        <Button variant="outline" on:click={console.log}>Outline</Button>
-        <Button variant="outline" disabled on:click={console.log}>Outline disabled</Button>
+        <Button variant="primary" uppercase>Primary</Button>
+        <Button variant="primary" uppercase disabled>Disabled</Button>
+        <Button variant="outline">Outline</Button>
+        <Button variant="outline" disabled>Disabled</Button>
+        <Button variant="text" uppercase on:click>Text</Button>
+        <Button variant="text" uppercase disabled>Disabled</Button>
         <br />
         <br />
-        <Button variant="success" on:click={console.log} fullWidth uppercase>
-          <span slot="prefix">💕</span>
-          <span slot="suffix">👌</span>
-          Full width button
-        </Button>
-        <br />
-        <br />
-        <div style:width="100px">
-          <Button variant="primary" on:click={console.log} fullWidth>
-            <span slot="prefix">💕</span>
-            Full width in container with long text
-          </Button>
-        </div>
-        <br />
-        <Group>
-          <Button squared="right" variant="success">Success</Button>
-          <Button squared variant="warning">Warning</Button>
-          <Button squared="left" variant="danger">Danger</Button>
-        </Group>
+        <Button variant="success">Success</Button>
+        <Button variant="warning">Warning</Button>
+        <Button variant="danger">Danger</Button>
 
+        <h4>FULL WIDTH, PREFIX, SUFFIX, OVERFLOW</h4>
+        <div class="full">
+          <div style:width="760px">
+            <Button variant="primary" fullWidth>
+              <span slot="prefix">💕</span>
+              <span slot="suffix">👌</span>
+              Full width with prefix and suffix
+            </Button>
+          </div>
+          <div style:width="200px">
+            <Button variant="primary" fullWidth>Full width with overflow</Button>
+          </div>
+        </div>
+        <h4>GROUP, SQUARED, ROUNDED</h4>
+        <Group>
+          <Button squared="right" uppercase>One</Button>
+          <Button squared uppercase>Two</Button>
+          <Button squared="left" uppercase>Three</Button>
+        </Group>
+        <Button squared="right" variant="primary">Squared right</Button>
+        <Button squared variant="primary">Squared</Button>
+        <Button squared="left" variant="primary">Squared left</Button>
+        <Button rounded squared="left" variant="primary">Rounded right</Button>
+        <Button rounded variant="primary">Rounded</Button>
+        <Button rounded squared="right" variant="primary">Rounded left</Button>
+
+        <h3>PARAGRAPHS</h3>
         <div>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim doloremque pariatur fugit
@@ -150,5 +170,9 @@
   main {
     margin: 0 auto;
     max-width: 960px;
+  }
+  .full {
+    display: flex;
+    gap: var(--gal-spacing);
   }
 </style>
