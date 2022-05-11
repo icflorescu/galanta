@@ -1,0 +1,10 @@
+body {
+  font-family: var(--gal-font-family-default);
+  font-size: var(--gal-font-size);
+  color: var(--gal-color-text);
+  background: var(--gal-color-background);
+}
+
+a {
+  color: var(--gal-color-primary);
+}

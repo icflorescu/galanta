@@ -20,7 +20,6 @@
     borderRadius?: number;
   }[] = [{ name: 'default' }];
   export let currentTheme = themes[0].name;
-  export let fullHeight = false;
 
   $: theme = themes.find((theme) => theme.name === currentTheme) || themes[0];
 
@@ -74,29 +73,15 @@
       "ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace"
   };
 
-  $: style = Object.entries(variables)
-    .map(([key, value]) => `--gal-${key}:${value}`)
-    .join(';');
+  $: output =
+    '<' +
+    'style data-sveltekit>:root{' +
+    Object.entries(variables)
+      .map(([key, value]) => `--gal-${key}:${value}`)
+      .join(';') +
+    '}</style>';
 </script>
 
-<div {style} class:fullHeight>
-  <slot />
-</div>
-
-<style lang="scss">
-  div {
-    font-family: var(--gal-font-family-default);
-    font-size: var(--gal-font-size);
-    color: var(--gal-color-text);
-    background: var(--gal-color-background);
-
-    :global(a) {
-      color: var(--gal-color-primary);
-    }
-  }
-
-  .fullHeight {
-    min-height: 100vh;
-    overflow: auto;
-  }
-</style>
+<svelte:head>
+  {@html output}
+</svelte:head>

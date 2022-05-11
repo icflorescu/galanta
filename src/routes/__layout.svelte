@@ -1,13 +1,13 @@
 <script lang="ts">
   import Button from '$lib/Button.svelte';
   import '$lib/normalize.css';
-  import Viewport from '$lib/Viewport.svelte';
+  import ThemeProvider from '$lib/ThemeProvider.svelte';
+  import './__layout.css';
 
   let theme: 'light' | 'dark' = 'light';
 </script>
 
-<Viewport
-  fullHeight
+<ThemeProvider
   themes={[
     { name: 'light' },
     {
@@ -17,20 +17,20 @@
     }
   ]}
   currentTheme={theme}
->
-  <header>
-    <nav class="header-content">
-      <ul>
-        <li><a href="/">Buttons</a></li>
-        <li><a href="/icons">Icons</a></li>
-      </ul>
-      <Button on:click={() => (theme = theme === 'light' ? 'dark' : 'light')}>Change theme</Button>
-    </nav>
-  </header>
-  <main>
-    <slot />
-  </main>
-</Viewport>
+/>
+
+<header>
+  <nav class="header-content">
+    <ul>
+      <li><a href="/">Buttons</a></li>
+      <li><a href="/icons">Icons</a></li>
+    </ul>
+    <Button on:click={() => (theme = theme === 'light' ? 'dark' : 'light')}>Change theme</Button>
+  </nav>
+</header>
+<main>
+  <slot />
+</main>
 
 <style lang="scss">
   header {
