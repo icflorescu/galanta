@@ -1,23 +1,19 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-plane-arrival"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><path
+    d="m15.157 11.81 4.83 1.295a2 2 0 0 1-1.036 3.863L4.462 13.086 3.117 6.514l2.898.776 1.414 2.45 2.898.776-.12-7.279 2.898.777zM3 21h18"
+  /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <path
-    d="M15 12h5a2 2 0 0 1 0 4h-15l-3 -6h3l2 2h3l-2 -7h3z"
-    transform="rotate(15 12 12) translate(0 -1)"
-  />
-  <line x1="3" y1="21" x2="21" y2="21" />
-</svg>

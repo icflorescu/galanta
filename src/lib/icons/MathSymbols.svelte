@@ -1,27 +1,19 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-math-symbols"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><path
+    d="M3 12h18m-9-9v18m4.5-16.5 3 3m0-3-3 3M6 4v4M4 6h4m10 10h.01M18 20h.01M4 18h4"
+  /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <line x1="3" y1="12" x2="21" y2="12" />
-  <line x1="12" y1="3" x2="12" y2="21" />
-  <line x1="16.5" y1="4.5" x2="19.5" y2="7.5" />
-  <line x1="19.5" y1="4.5" x2="16.5" y2="7.5" />
-  <line x1="6" y1="4" x2="6" y2="8" />
-  <line x1="4" y1="6" x2="8" y2="6" />
-  <line x1="18" y1="16" x2="18.01" y2="16" />
-  <line x1="18" y1="20" x2="18.01" y2="20" />
-  <line x1="4" y1="18" x2="8" y2="18" />
-</svg>

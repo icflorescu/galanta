@@ -1,20 +1,21 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-helmet"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><path
+    d="M12 4a9 9 0 0 1 5.656 16H6.344A9 9 0 0 1 12 4z"
+  /><path
+    d="M20 9h-8.8a1 1 0 0 0-.968 1.246c.507 2 1.596 3.418 3.268 4.254 2 1 4.333 1.5 7 1.5"
+  /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <path d="M12 4a9 9 0 0 1 5.656 16h-11.312a9 9 0 0 1 5.656 -16z" />
-  <path d="M20 9h-8.8a1 1 0 0 0 -.968 1.246c.507 2 1.596 3.418 3.268 4.254c2 1 4.333 1.5 7 1.5" />
-</svg>

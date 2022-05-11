@@ -1,30 +1,25 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-qrcode"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><rect x="4" y="4" width="6" height="6" rx="1" /><path
+    d="M7 17v.01"
+  /><rect x="14" y="4" width="6" height="6" rx="1" /><path d="M7 7v.01" /><rect
+    x="4"
+    y="14"
+    width="6"
+    height="6"
+    rx="1"
+  /><path d="M17 7v.01M14 14h3m3 0v.01M14 14v3m0 3h3m0-3h3m0 0v3" /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <rect x="4" y="4" width="6" height="6" rx="1" />
-  <line x1="7" y1="17" x2="7" y2="17.01" />
-  <rect x="14" y="4" width="6" height="6" rx="1" />
-  <line x1="7" y1="7" x2="7" y2="7.01" />
-  <rect x="4" y="14" width="6" height="6" rx="1" />
-  <line x1="17" y1="7" x2="17" y2="7.01" />
-  <line x1="14" y1="14" x2="17" y2="14" />
-  <line x1="20" y1="14" x2="20" y2="14.01" />
-  <line x1="14" y1="14" x2="14" y2="17" />
-  <line x1="14" y1="20" x2="17" y2="20" />
-  <line x1="17" y1="17" x2="20" y2="17" />
-  <line x1="20" y1="17" x2="20" y2="20" />
-</svg>

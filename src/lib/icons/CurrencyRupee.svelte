@@ -1,20 +1,17 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-currency-rupee"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><path d="M18 5H7h3a4 4 0 0 1 0 8H7l6 6M7 9h11" /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <path d="M18 5h-11h3a4 4 0 0 1 0 8h-3l6 6" />
-  <line x1="7" y1="9" x2="18" y2="9" />
-</svg>

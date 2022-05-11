@@ -62,7 +62,7 @@
     'color-danger-h': Math.round(colorDangerHsl.h),
     'color-danger-s': `${Math.round(colorDangerHsl.s)}%`,
     'color-danger-l': `${Math.round(colorDangerHsl.l)}%`,
-    spacing: `${currentTheme.spacing || 8}px`,
+    'spacing': `${currentTheme.spacing || 8}px`,
     'border-radius': `${currentTheme.borderRadius || 4}px`,
     'font-size': `${currentTheme.fontSize || 16}px`,
     'font-family-default':

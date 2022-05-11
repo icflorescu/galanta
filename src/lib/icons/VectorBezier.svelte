@@ -1,27 +1,25 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-vector-bezier"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><rect x="3" y="14" width="4" height="4" rx="1" /><rect
+    x="17"
+    y="14"
+    width="4"
+    height="4"
+    rx="1"
+  /><rect x="10" y="6" width="4" height="4" rx="1" /><path
+    d="M10 8.5A6 6 0 0 0 5 14m9-5.5a6 6 0 0 1 5 5.5m-9-6H4m16 0h-6"
+  /><circle cx="3" cy="8" r="1" /><circle cx="21" cy="8" r="1" /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <rect x="3" y="14" width="4" height="4" rx="1" />
-  <rect x="17" y="14" width="4" height="4" rx="1" />
-  <rect x="10" y="6" width="4" height="4" rx="1" />
-  <path d="M10 8.5a6 6 0 0 0 -5 5.5" />
-  <path d="M14 8.5a6 6 0 0 1 5 5.5" />
-  <line x1="10" y1="8" x2="4" y2="8" />
-  <line x1="20" y1="8" x2="14" y2="8" />
-  <circle cx="3" cy="8" r="1" />
-  <circle cx="21" cy="8" r="1" />
-</svg>

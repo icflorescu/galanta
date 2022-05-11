@@ -1,21 +1,17 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-flip-vertical"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><path d="M12 3v18m4-14v10h5L16 7M8 7v10H3L8 7" /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <line x1="12" y1="3" x2="12" y2="21" />
-  <polyline points="16 7 16 17 21 17 16 7" />
-  <polyline points="8 7 8 17 3 17 8 7" />
-</svg>

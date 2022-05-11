@@ -1,27 +1,21 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-robot-off"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><path
+    d="M11 7h6a2 2 0 0 1 2 2v1l1 1v3l-1 1m-.171 3.811A2 2 0 0 1 17 20H7a2 2 0 0 1-2-2v-3l-1-1v-3l1-1V9a2 2 0 0 1 2-2m3 9h4"
+  /><circle cx="8.5" cy="11.5" r="1" /><path
+    d="M15.854 11.853A.498.498 0 0 0 15.5 11a.498.498 0 0 0-.356.149M8.336 4.343 8 3m7 4 1-4M3 3l18 18"
+  /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <path
-    d="M11 7h6a2 2 0 0 1 2 2v1l1 1v3l-1 1m-.171 3.811a2 2 0 0 1 -1.829 1.189h-10a2 2 0 0 1 -2 -2v-3l-1 -1v-3l1 -1v-1a2 2 0 0 1 2 -2"
-  />
-  <path d="M10 16h4" />
-  <circle cx="8.5" cy="11.5" r="1" />
-  <path d="M15.854 11.853a0.498 .498 0 0 0 -.354 -.853a0.498 .498 0 0 0 -.356 .149" />
-  <path d="M8.336 4.343l-.336 -1.343" />
-  <path d="M15 7l1 -4" />
-  <path d="M3 3l18 18" />
-</svg>

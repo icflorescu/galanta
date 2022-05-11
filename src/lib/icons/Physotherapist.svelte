@@ -1,24 +1,21 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-physotherapist"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><path d="m9 15-1-3 4-2 4 1h3.5" /><circle
+    cx="4"
+    cy="19"
+    r="1"
+  /><circle cx="12" cy="6" r="1" /><path d="M12 17v-7M8 20h7l1-4 4-2m-2 6h3" /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <path d="M9 15l-1 -3l4 -2l4 1h3.5" />
-  <circle cx="4" cy="19" r="1" />
-  <circle cx="12" cy="6" r="1" />
-  <path d="M12 17v-7" />
-  <path d="M8 20h7l1 -4l4 -2" />
-  <path d="M18 20h3" />
-</svg>

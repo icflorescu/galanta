@@ -1,22 +1,24 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-device-nintendo"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><path
+    d="M10 20V4H7a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h3zm4 0V4h3a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-3z"
+  /><circle cx="17.5" cy="15.5" r="1" fill="currentColor" /><circle
+    cx="6.5"
+    cy="8.5"
+    r="1"
+    fill="currentColor"
+  /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <path d="M10 20v-16h-3a4 4 0 0 0 -4 4v8a4 4 0 0 0 4 4h3z" />
-  <path d="M14 20v-16h3a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-3z" />
-  <circle cx="17.5" cy="15.5" r="1" fill="currentColor" />
-  <circle cx="6.5" cy="8.5" r="1" fill="currentColor" />
-</svg>

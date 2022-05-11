@@ -1,22 +1,22 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-gender-genderqueer"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><circle
+    transform="matrix(1 0 0 -1 0 32)"
+    cx="12"
+    cy="16"
+    r="5"
+  /><path d="M12 11V3m2.5 1.5-5 3m0-3 5 3" /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <circle transform="matrix(1 0 0 -1 0 32)" cx="12" cy="16" r="5" />
-  <path d="M12 11v-8" />
-  <path d="M14.5 4.5l-5 3" />
-  <path d="M9.5 4.5l5 3" />
-</svg>

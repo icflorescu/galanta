@@ -1,24 +1,21 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-nfc-off"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><path
+    d="M11 20a3 3 0 0 1-3-3V8m5-4a3 3 0 0 1 3 3v5m0 4v2l-5-5"
+  /><path
+    d="M8 4h9a3 3 0 0 1 3 3v9m-.873 3.116A2.99 2.99 0 0 1 17 20H7a3 3 0 0 1-3-3V7c0-.83.337-1.582.882-2.125M3 3l18 18"
+  /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <path d="M11 20a3 3 0 0 1 -3 -3v-9" />
-  <path d="M13 4a3 3 0 0 1 3 3v5m0 4v2l-5 -5" />
-  <path
-    d="M8 4h9a3 3 0 0 1 3 3v9m-.873 3.116a2.99 2.99 0 0 1 -2.127 .884h-10a3 3 0 0 1 -3 -3v-10c0 -.83 .337 -1.582 .882 -2.125"
-  />
-  <path d="M3 3l18 18" />
-</svg>

@@ -1,23 +1,21 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-steering-wheel"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><circle cx="12" cy="12" r="9" /><circle
+    cx="12"
+    cy="12"
+    r="2"
+  /><path d="M12 14v7m-2-9-6.75-2M14 12l6.75-2" /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <circle cx="12" cy="12" r="9" />
-  <circle cx="12" cy="12" r="2" />
-  <line x1="12" y1="14" x2="12" y2="21" />
-  <line x1="10" y1="12" x2="3.25" y2="10" />
-  <line x1="14" y1="12" x2="20.75" y2="10" />
-</svg>

@@ -1,23 +1,19 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-relation-many-to-many"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><rect x="3" y="5" width="18" height="14" rx="2" /><path
+    d="M15 14v-4l3 4v-4M6 14v-4l3 4v-4m3 .5v.01m0 2.99v.01"
+  /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <rect x="3" y="5" width="18" height="14" rx="2" />
-  <path d="M15 14v-4l3 4v-4" />
-  <path d="M6 14v-4l3 4v-4" />
-  <line x1="12" y1="10.5" x2="12" y2="10.51" />
-  <line x1="12" y1="13.5" x2="12" y2="13.51" />
-</svg>

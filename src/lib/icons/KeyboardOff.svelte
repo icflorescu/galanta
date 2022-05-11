@@ -1,29 +1,19 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-keyboard-off"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><path
+    d="M18 18H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2m4 0h10a2 2 0 0 1 2 2v8c0 .554-.226 1.056-.59 1.418M6 10v.01m4-.01v.01m4-.01v.01m4-.01v.01M6 14v.01M18 14v.01M10 14h4M3 3l18 18"
+  /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <path
-    d="M18 18h-14a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h2m4 0h10a2 2 0 0 1 2 2v8c0 .554 -.226 1.056 -.59 1.418"
-  />
-  <line x1="6" y1="10" x2="6" y2="10.01" />
-  <line x1="10" y1="10" x2="10" y2="10.01" />
-  <line x1="14" y1="10" x2="14" y2="10.01" />
-  <line x1="18" y1="10" x2="18" y2="10.01" />
-  <line x1="6" y1="14" x2="6" y2="14.01" />
-  <line x1="18" y1="14" x2="18" y2="14.01" />
-  <line x1="10" y1="14" x2="14" y2="14" />
-  <line x1="3" y1="3" x2="21" y2="21" />
-</svg>

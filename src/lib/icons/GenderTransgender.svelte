@@ -1,26 +1,19 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-gender-transgender"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><circle cx="12" cy="12" r="4" /><path
+    d="m15 9 6-6m0 4V3h-4M9 9 3 3m0 4V3h4M5.5 8.5l3-3M12 16v5m-2.5-2h5"
+  /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <circle cx="12" cy="12" r="4" />
-  <path d="M15 9l6 -6" />
-  <path d="M21 7v-4h-4" />
-  <path d="M9 9l-6 -6" />
-  <path d="M3 7v-4h4" />
-  <path d="M5.5 8.5l3 -3" />
-  <path d="M12 16v5" />
-  <path d="M9.5 19h5" />
-</svg>

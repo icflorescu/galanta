@@ -1,29 +1,19 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-gender-genderfluid"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><g transform="rotate(30 -2.778 22.523)"
+    ><circle cx="4.759" cy="6.021" r="4" /><path d="M8.758 6.02v-6m-8 12v-6" /></g
+  ><path d="M12 12h.01M9 9 3 3m2.5 5.5 3-3M21 21l-6-6m2 5 3-3M3 7V3h4" /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <g transform="rotate(30 -2.778 22.523)">
-    <circle cx="4.759" cy="6.021" r="4" />
-    <path d="M8.758 6.02v-6" />
-    <path d="M.758 12.02v-6" />
-  </g>
-  <path d="M12 12h.01" />
-  <path d="M9 9l-6 -6" />
-  <path d="M5.5 8.5l3 -3" />
-  <path d="M21 21l-6 -6" />
-  <path d="M17 20l3 -3" />
-  <path d="M3 7v-4h4" />
-</svg>

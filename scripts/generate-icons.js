@@ -1,7 +1,11 @@
 import { camelCase, upperFirst } from 'lodash-es';
 import { exec } from 'node:child_process';
-import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { cwd } from 'node:process';
+import { promisify } from 'node:util';
+import { optimize } from 'svgo';
+
+const execute = promisify(exec);
 
 const pwd = cwd();
 const inputDir = `${pwd}/node_modules/@tabler/icons/icons`;
@@ -9,27 +13,35 @@ const outputDir = `${pwd}/src/lib/icons`;
 
 console.log('Reading source files...');
 
-const files = readdirSync(inputDir);
+const files = await readdir(inputDir);
 
 console.log(`Generating ${files.length} icon files...`);
 
-exec(`rm -rf ${outputDir}`);
-exec(`mkdir ${outputDir}`);
+await execute(`rm -rf ${outputDir}`);
+await execute(`mkdir ${outputDir}`);
 
 let indexContent = '';
-const fileOptions = { mode: '666' };
+
 const filePrefix = `
   <script lang="ts">
-    export let color: string = 'currentColor';
+    export let size = 24;
+    export let color = 'currentColor';
+    export let strokeWidth = 2;
   </script>
 `;
 
 for (const file of files) {
+  const source = await readFile(`${inputDir}/${file}`, { encoding: 'utf-8' });
+
   let content =
     filePrefix +
-    readFileSync(`${inputDir}/${file}`, { encoding: 'utf-8' })
-      .replace(/<desc>[^<]+<\/desc>/, '')
-      .replace('icon-tabler icon-tabler', 'icon');
+    optimize(source, { multipass: true })
+      .data.replace('xmlns="http://www.w3.org/2000/svg"', '')
+      .replace('icon-tabler icon-tabler', 'icon')
+      .replace('width="24"', 'width={size}')
+      .replace('height="24"', 'height={size}')
+      .replace('stroke-width="2"', 'stroke-width={strokeWidth}')
+      .replace('"currentColor"', '{color}');
 
   let [componentName] = file.split('.');
   componentName = upperFirst(camelCase(componentName));
@@ -38,11 +50,13 @@ for (const file of files) {
   } else if (componentName.startsWith('3')) {
     componentName = componentName.replace(/^3/, 'Three');
   }
-  writeFileSync(`${outputDir}/${componentName}.svelte`, content, fileOptions);
-  indexContent += `export { default as ${componentName} } from './${componentName}.svelte';\n`;
-  writeFileSync(`${outputDir}/index.ts`, indexContent, fileOptions);
+  indexContent += `export { default as ${componentName} } from './${componentName}.svelte';`;
+
+  await writeFile(`${outputDir}/${componentName}.svelte`, content);
 }
 
-console.log('Formatting icon files...');
+await writeFile(`${outputDir}/index.ts`, indexContent);
 
-exec(`pnpm prettier --write --plugin-search-dir="${pwd}" ${outputDir}/*.svelte`);
+console.log('Formatting generated files...');
+
+await execute(`pnpm prettier --write --plugin-search-dir="${pwd}" ${outputDir}`);

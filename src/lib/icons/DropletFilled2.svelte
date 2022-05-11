@@ -1,22 +1,19 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-droplet-filled-2"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><path
+    d="M6.8 11a6 6 0 1 0 10.396 0l-5.197-8-5.2 8zM6 14h12M7.305 17.695 11 14"
+  /><path d="M10.26 19.74 16 14l-5.74 5.74z" /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <path d="M6.8 11a6 6 0 1 0 10.396 0l-5.197 -8l-5.2 8z" />
-  <path d="M6 14h12" />
-  <path d="M7.305 17.695l3.695 -3.695" />
-  <path d="M10.26 19.74l5.74 -5.74l-5.74 5.74z" />
-</svg>

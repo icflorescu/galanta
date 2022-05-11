@@ -1,25 +1,21 @@
 <script lang="ts">
-  export let color: string = 'currentColor';
+  export let size = 24;
+  export let color = 'currentColor';
+  export let strokeWidth = 2;
 </script>
 
 <svg
-  xmlns="http://www.w3.org/2000/svg"
   class="icon icon-emergency-bed"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
+  width={size}
+  height={size}
+  stroke-width={strokeWidth}
+  stroke={color}
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
+  ><path d="M0 0h24v24H0z" stroke="none" /><circle cx="16" cy="18" r="2" /><circle
+    cx="8"
+    cy="18"
+    r="2"
+  /><path d="m4 8 2.1 2.8A3 3 0 0 0 8.5 12H20M10 6h4m-2-2v4m0 4v2l-2.5 2.5m5 0L12 14" /></svg
 >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-  <circle cx="16" cy="18" r="2" />
-  <circle cx="8" cy="18" r="2" />
-  <path d="M4 8l2.1 2.8a3 3 0 0 0 2.4 1.2h11.5" />
-  <path d="M10 6h4" />
-  <path d="M12 4v4" />
-  <path d="M12 12v2l-2.5 2.5" />
-  <path d="M14.5 16.5l-2.5 -2.5" />
-</svg>
