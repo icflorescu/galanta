@@ -73,8 +73,8 @@
 			"ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace"
 	};
 
-	$: style = Object.keys(variables)
-		.map((key) => `--gal-${key}:${variables[key as keyof typeof variables]}`)
+	$: style = Object.entries(variables)
+		.map(([key, value]) => `--gal-${key}:${value}`)
 		.join(';');
 </script>
 
