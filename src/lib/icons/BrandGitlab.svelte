@@ -8,6 +8,7 @@
   class="icon icon-brand-gitlab"
   width={size}
   height={size}
+  viewBox="0 0 24 24"
   stroke-width={strokeWidth}
   stroke={color}
   fill="none"

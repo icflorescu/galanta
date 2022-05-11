@@ -8,6 +8,7 @@
   class="icon icon-play-card"
   width={size}
   height={size}
+  viewBox="0 0 24 24"
   stroke-width={strokeWidth}
   stroke={color}
   fill="none"

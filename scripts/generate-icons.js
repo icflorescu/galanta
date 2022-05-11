@@ -35,7 +35,10 @@ for (const file of files) {
 
   let content =
     filePrefix +
-    optimize(source, { multipass: true })
+    optimize(source, {
+      multipass: true,
+      plugins: [{ name: 'preset-default', params: { overrides: { removeViewBox: false } } }]
+    })
       .data.replace('xmlns="http://www.w3.org/2000/svg"', '')
       .replace('icon-tabler icon-tabler', 'icon')
       .replace('width="24"', 'width={size}')
