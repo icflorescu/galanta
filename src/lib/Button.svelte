@@ -63,7 +63,6 @@
     padding: 0 calc(var(--gal-spacing) * 2);
     height: calc(var(--gal-spacing) * 4.5);
     cursor: pointer;
-
     &:hover {
       background: hsl(
         var(--gal-color-background-h),
@@ -71,7 +70,9 @@
         calc(var(--gal-color-background-l) + var(--gal-lightness-multiplier) * 20%)
       );
     }
-
+    &:focus-visible {
+      outline-color: var(--gal-color-primary);
+    }
     &:active {
       transform: translate3d(0, 1px, 0);
     }
@@ -91,6 +92,14 @@
         var(--gal-color-primary-h),
         var(--gal-color-primary-s),
         calc(var(--gal-color-primary-l) - 5%)
+      );
+    }
+    &:focus-visible {
+      outline-color: hsla(
+        var(--gal-color-text-h),
+        var(--gal-color-text-s),
+        var(--gal-color-text-l),
+        0.5
       );
     }
   }

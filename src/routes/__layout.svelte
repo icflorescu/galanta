@@ -39,6 +39,7 @@
     <ul>
       <li><a href="/">Buttons</a></li>
       <li><a href="/icons">Icons</a></li>
+      <li><a href="/inputs">Inputs</a></li>
     </ul>
     <div>
       <Button on:click={() => (theme = theme === 'light' ? 'dark' : 'light')}>
@@ -73,10 +74,10 @@
       var(--gal-color-background-h),
       var(--gal-color-background-s),
       var(--gal-color-background-l),
-      0.75
+      0.8
     );
     box-shadow: 0 1px 2px rgba(black, 0.25);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(5px);
   }
 
   nav {
