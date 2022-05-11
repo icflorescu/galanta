@@ -20,8 +20,6 @@ console.log(`Generating ${files.length} icon files...`);
 await execute(`rm -rf ${outputDir}`);
 await execute(`mkdir ${outputDir}`);
 
-let indexContent = '';
-
 const filePrefix = `
   <script lang="ts">
     export let size = 24;
@@ -53,12 +51,9 @@ for (const file of files) {
   } else if (componentName.startsWith('3')) {
     componentName = componentName.replace(/^3/, 'Three');
   }
-  indexContent += `export { default as ${componentName} } from './${componentName}.svelte';`;
 
   await writeFile(`${outputDir}/${componentName}.svelte`, content);
 }
-
-await writeFile(`${outputDir}/index.ts`, indexContent);
 
 console.log('Formatting generated files...');
 

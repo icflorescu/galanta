@@ -3,6 +3,7 @@
   "description": "A minimal UI library to make your Svelte apps look stylish",
   "version": "0.0.2",
   "scripts": {
+    "generate-icons": "node ./scripts/generate-icons.js",
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
     "package": "svelte-kit package",
