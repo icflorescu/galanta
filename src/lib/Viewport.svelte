@@ -1,21 +1,21 @@
 <script lang="ts">
-	export let full = false;
+  export let full = false;
 </script>
 
 <div class:full>
-	<slot />
+  <slot />
 </div>
 
 <style>
-	div {
-		font-family: var(--gal-font-family-default);
-		font-size: var(--gal-font-size);
-		color: var(--gal-color-text);
-		background: var(--gal-color-background);
-	}
+  div {
+    font-family: var(--gal-font-family-default);
+    font-size: var(--gal-font-size);
+    color: var(--gal-color-text);
+    background: var(--gal-color-background);
+  }
 
-	.full {
-		min-height: 100vh;
-		overflow: auto;
-	}
+  .full {
+    min-height: 100vh;
+    overflow: auto;
+  }
 </style>

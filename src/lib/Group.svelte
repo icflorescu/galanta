@@ -1,9 +1,9 @@
 <div>
-	<slot />
+  <slot />
 </div>
 
 <style>
-	div {
-		display: inline-flex;
-	}
+  div {
+    display: inline-flex;
+  }
 </style>
