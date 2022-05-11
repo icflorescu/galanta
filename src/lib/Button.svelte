@@ -51,7 +51,6 @@
     align-items: center;
     justify-content: center;
     font-weight: 500;
-    line-height: normal;
     text-decoration: none;
     color: var(--gal-color-text);
     background: hsl(
