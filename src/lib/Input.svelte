@@ -79,8 +79,6 @@
     'class': 'input',
     'class:warning': !!warning,
     'class:danger': !!error,
-    'style:padding-left': $$slots.prefix ? `${prefixWidth}px` : undefined,
-    'style:padding-right': $$slots.suffix ? `${suffixWidth}px` : undefined,
     placeholder,
     autocapitalize,
     autocomplete,
@@ -120,11 +118,32 @@
     </span>
   {/if}
   {#if type === 'email'}
-    <input {...props} type="email" on:input bind:value />
+    <input
+      {...props}
+      style:padding-left={$$slots.prefix ? `${prefixWidth}px` : undefined}
+      style:padding-right={$$slots.suffix ? `${suffixWidth}px` : undefined}
+      type="email"
+      on:input
+      bind:value
+    />
   {:else if type === 'tel'}
-    <input {...props} type="tel" on:input bind:value />
+    <input
+      {...props}
+      style:padding-left={$$slots.prefix ? `${prefixWidth}px` : undefined}
+      style:padding-right={$$slots.suffix ? `${suffixWidth}px` : undefined}
+      type="tel"
+      on:input
+      bind:value
+    />
   {:else}
-    <input {...props} type="text" on:input bind:value />
+    <input
+      {...props}
+      style:padding-left={$$slots.prefix ? `${prefixWidth}px` : undefined}
+      style:padding-right={$$slots.suffix ? `${suffixWidth}px` : undefined}
+      type="text"
+      on:input
+      bind:value
+    />
   {/if}
   {#if warning}
     <span class="warning message">{warning}</span>
