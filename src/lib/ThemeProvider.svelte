@@ -31,7 +31,7 @@
   $: colorPrimaryHsl = colorPrimary.hsl().object();
   $: colorSuccess = Color(theme.color?.success || '#40c057');
   $: colorSuccessHsl = colorSuccess.hsl().object();
-  $: colorWarning = Color(theme.color?.warning || '#fab005');
+  $: colorWarning = Color(theme.color?.warning || '#fd7e14');
   $: colorWarningHsl = colorWarning.hsl().object();
   $: colorDanger = Color(theme.color?.danger || '#fa5252');
   $: colorDangerHsl = colorDanger.hsl().object();

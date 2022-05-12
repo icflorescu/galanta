@@ -60,23 +60,54 @@
   export let autocorrect = false;
   export let spellcheck = false;
   export let title: string | undefined = undefined;
+  export let warning: string | undefined = undefined;
+  export let error: string | undefined = undefined;
   export let squared: true | 'left' | 'right' | undefined = undefined;
   export let rounded = false;
   export let required = false;
   export let disabled = false;
+  export let mt: number | 'label-height' | undefined = undefined;
+  export let mb: number | undefined = undefined;
+  export let ml: number | undefined = undefined;
+  export let mr: number | undefined = undefined;
+  export let prefixWidth = 36;
+  export let suffixWidth = 36;
+  export let value: string | number = '';
 </script>
 
-<label {title}>
+<label
+  {title}
+  class:rounded
+  class:squaredLeft={squared === 'left' || squared === true}
+  class:squaredRight={squared === 'right' || squared === true}
+  class:labelHeightTopMargin={mt === 'label-height'}
+  style:margin-top={typeof mt === 'number' ? `calc(var(--gal-spacing) * ${mt})` : undefined}
+  style:margin-bottom={mb && `calc(var(--gal-spacing) * ${mb})`}
+  style:margin-left={ml && `calc(var(--gal-spacing) * ${ml})`}
+  style:margin-right={ml && `calc(var(--gal-spacing) * ${mr})`}
+>
   {#if label}
-    <span class="labelText" class:rounded>
+    <span class="labelText">
       {label}
       {#if required}<span class="requiredMark" aria-hidden="true">*</span>{/if}
-    </span>{/if}
+    </span>
+  {/if}
+  {#if $$slots.prefix}
+    <span class="prefix" class:noLabel={!label} style:width={`${prefixWidth}px`}>
+      <slot name="prefix" />
+    </span>
+  {/if}
+  {#if $$slots.suffix}
+    <span class="suffix" class:noLabel={!label} style:width={`${suffixWidth}px`}>
+      <slot name="suffix" />
+    </span>
+  {/if}
   <input
     class="input"
-    class:rounded
-    class:squaredLeft={squared === 'left' || squared === true}
-    class:squaredRight={squared === 'right' || squared === true}
+    class:warning={!!warning}
+    class:danger={!!error}
+    style:padding-left={$$slots.prefix ? `${prefixWidth}px` : undefined}
+    style:padding-right={$$slots.suffix ? `${suffixWidth}px` : undefined}
     type="text"
     {placeholder}
     {autocapitalize}
@@ -85,7 +116,14 @@
     spellcheck={spellcheck ? 'true' : 'false'}
     {required}
     {disabled}
+    on:input
+    bind:value
   />
+  {#if warning}
+    <span class="warning message">{warning}</span>
+  {:else if error}
+    <span class="error message">{error}</span>
+  {/if}
 </label>
 
 <style lang="scss">
@@ -93,15 +131,23 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   .labelText {
-    color: hsla(var(--gal-color-text-h), var(--gal-color-text-s), var(--gal-color-text-l), 0.85);
     font-weight: 500;
     font-size: 87.5%;
-    margin: 0 0 calc(var(--gal-spacing) * 0.25) calc(var(--gal-spacing) * 0.5);
-    &.rounded {
-      margin-left: calc(var(--gal-spacing) * 2);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: hsla(var(--gal-color-text-h), var(--gal-color-text-s), var(--gal-color-text-l), 0.85);
+    margin: 0 calc(var(--gal-spacing) * 0.5) calc(var(--gal-spacing) * 0.25)
+      calc(var(--gal-spacing) * 0.5);
+    .rounded:not(.squaredLeft) & {
+      margin-left: calc(var(--gal-spacing) * 1.75);
+    }
+    .rounded:not(.squaredRight) & {
+      margin-right: calc(var(--gal-spacing) * 1.75);
     }
   }
 
@@ -112,7 +158,7 @@
   .input {
     color: var(--gal-color-text);
     background: transparent;
-    padding: 0 calc(var(--gal-spacing) * 1.5);
+    padding: 0 calc(var(--gal-spacing) * 1.75);
     height: calc(var(--gal-spacing) * 4.5);
     border-radius: var(--gal-border-radius);
     border: 1px solid
@@ -146,19 +192,76 @@
       );
     }
 
-    &.rounded {
-      padding: 0 calc(var(--gal-spacing) * 2);
+    .rounded & {
       border-radius: calc(var(--gal-spacing) * 2.5);
     }
 
-    &.squaredLeft {
+    .squaredLeft & {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
 
-    &.squaredRight {
+    .squaredRight & {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
+
+    &.warning {
+      color: var(--gal-color-warning);
+      border-color: var(--gal-color-warning);
+    }
+
+    &.danger {
+      color: var(--gal-color-danger);
+      border-color: var(--gal-color-danger);
+    }
+  }
+
+  .message {
+    font-size: 87.5%;
+    line-height: 1.15;
+    margin: calc(var(--gal-spacing) * 0.5) calc(var(--gal-spacing) * 0.5) 0;
+    .rounded:not(.squaredLeft) & {
+      margin-left: calc(var(--gal-spacing) * 1.75);
+    }
+    .rounded:not(.squaredRight) & {
+      margin-right: calc(var(--gal-spacing) * 1.75);
+    }
+    &.warning {
+      color: var(--gal-color-warning);
+    }
+    &.error {
+      color: var(--gal-color-danger);
+    }
+  }
+
+  .labelHeightTopMargin {
+    /* line height * 87.5% = 1.3125 */
+    margin-top: calc(var(--gal-spacing) * 0.25 + var(--gal-font-size) * 1.3125);
+  }
+
+  .prefix,
+  .suffix {
+    position: absolute;
+    /* line height * 87.5% = 1.3125 */
+    top: calc(var(--gal-spacing) * 0.25 + var(--gal-font-size) * 1.3125);
+    color: hsla(var(--gal-color-text-h), var(--gal-color-text-s), var(--gal-color-text-l), 0.5);
+    height: calc(var(--gal-spacing) * 4.5);
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    &.noLabel {
+      top: 0;
+    }
+  }
+
+  .prefix {
+    left: 0;
+  }
+
+  .suffix {
+    right: 0;
   }
 </style>

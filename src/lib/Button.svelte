@@ -15,6 +15,10 @@
   export let uppercase = false;
   export let fullWidth = false;
   export let disabled = false;
+  export let mt: number | 'label-height' | undefined = undefined;
+  export let mb: number | undefined = undefined;
+  export let ml: number | undefined = undefined;
+  export let mr: number | undefined = undefined;
 </script>
 
 <button
@@ -30,6 +34,11 @@
   class:icon
   class:uppercase
   class:fullWidth
+  class:labelHeightTopMargin={mt === 'label-height'}
+  style:margin-top={typeof mt === 'number' ? `calc(var(--gal-spacing) * ${mt})` : undefined}
+  style:margin-bottom={mb && `calc(var(--gal-spacing) * ${mb})`}
+  style:margin-left={ml && `calc(var(--gal-spacing) * ${ml})`}
+  style:margin-right={ml && `calc(var(--gal-spacing) * ${mr})`}
   {type}
   {title}
   {disabled}
@@ -184,11 +193,11 @@
   }
 
   .icon {
-    padding: 0 var(--gal-spacing);
-    &.rounded.squaredLeft {
+    padding: 0 calc(var(--gal-spacing) * 0.75);
+    &.rounded.squaredLeft:not(.squaredRight) {
       padding-right: calc(var(--gal-spacing) * 1.5);
     }
-    &.rounded.squaredRight {
+    &.rounded.squaredRight:not(.squaredLeft) {
       padding-left: calc(var(--gal-spacing) * 1.5);
     }
   }
@@ -227,5 +236,10 @@
         calc(var(--gal-color-danger-l) - 5%)
       );
     }
+  }
+
+  .labelHeightTopMargin {
+    /* line height * 87.5% = 1.3125 */
+    margin-top: calc(var(--gal-spacing) * 0.25 + var(--gal-font-size) * 1.3125);
   }
 </style>

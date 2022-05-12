@@ -4,27 +4,41 @@
   import Search from '$lib/icons/Search.svelte';
   import User from '$lib/icons/User.svelte';
   import Input from '$lib/Input.svelte';
+
+  let email = 'email@gmail.com';
 </script>
 
 <h1>Inputs</h1>
 
 <form>
-  <Group alignBottom>
+  <Group>
     <Input label="First name" placeholder="John" squared="right" required />
-    <Button icon squared="left" variant="primary">
+    <Button icon squared="left" variant="primary" mt="label-height">
       <User />
     </Button>
   </Group>
-  <Input label="Last name" placeholder="Snow" />
-  <Input label="Email address" placeholder="me@gmail.com" required />
-  <Button>Submit</Button>
+  <Input
+    label="Last name"
+    placeholder="Snow"
+    warning="This field has a warning, which can actually be a longer story"
+  >
+    <User slot="prefix" />
+  </Input>
+  <Input
+    label="Email address"
+    placeholder="me@gmail.com"
+    required
+    error="This field has an error"
+    bind:value={email}
+  />
+  <Button mt="label-height">Submit</Button>
   <div style:grid-column="1 / span 4">
     <Input label="Disabled search" placeholder="Search for items..." rounded disabled />
   </div>
   <div style:grid-column="1 / span 4">
-    <Group alignBottom>
+    <Group>
       <Input label="Search" placeholder="Search for items..." rounded squared="right" />
-      <Button icon rounded squared="left">
+      <Button icon rounded squared="left" mt="label-height">
         <Search />
       </Button>
     </Group>
@@ -35,7 +49,6 @@
   form {
     gap: var(--gal-spacing);
     display: grid;
-    align-items: flex-end;
-    grid-template-columns: 1fr 1fr 1fr 100px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) 100px;
   }
 </style>
