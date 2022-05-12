@@ -1,3 +1,5 @@
+/** Normalize */
+
 *,
 ::before,
 ::after {
@@ -126,4 +128,26 @@ progress {
 
 summary {
   display: list-item;
+}
+
+/** Theming */
+
+:root {
+  font-family: var(--gal-font-family-default);
+  font-size: var(--gal-font-size);
+  color: var(--gal-color-text);
+  background: var(--gal-color-background);
+}
+
+::selection {
+  background: hsla(
+    var(--gal-color-primary-h),
+    var(--gal-color-primary-s),
+    var(--gal-color-primary-l),
+    0.25
+  );
+}
+
+a {
+  color: var(--gal-color-primary);
 }

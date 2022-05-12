@@ -9,17 +9,14 @@
     | 'warning'
     | 'danger'
     | undefined = undefined;
+  export let icon = false;
   export let type: 'submit' | 'reset' | undefined = undefined;
-  export let disabled = false;
-  export let href: string | undefined = undefined;
-  export let target: string | undefined = undefined;
   export let uppercase = false;
   export let fullWidth = false;
+  export let disabled = false;
 </script>
 
-<svelte:element
-  this={href && !disabled ? 'a' : 'button'}
-  class="root"
+<button
   class:rounded
   class:squaredLeft={squared === 'left' || squared === true}
   class:squaredRight={squared === 'right' || squared === true}
@@ -29,29 +26,31 @@
   class:success={variant === 'success'}
   class:warning={variant === 'warning'}
   class:danger={variant === 'danger'}
+  class:icon
   class:uppercase
   class:fullWidth
   {disabled}
-  on:click
-  {href}
-  {target}
   {type}
+  on:click
 >
   <slot name="prefix" />
-  <span class="content">
+  {#if icon}
     <slot />
-  </span>
+  {:else}
+    <span class="content">
+      <slot />
+    </span>
+  {/if}
   <slot name="suffix" />
-</svelte:element>
+</button>
 
 <style lang="scss">
-  .root {
+  button {
     display: inline-flex;
     gap: var(--gal-spacing);
     align-items: center;
     justify-content: center;
     font-weight: 500;
-    text-decoration: none;
     color: var(--gal-color-text);
     background: hsl(
       var(--gal-color-background-h),
@@ -71,7 +70,8 @@
       );
     }
     &:focus-visible {
-      outline-color: var(--gal-color-primary);
+      outline-offset: 1px;
+      outline: 1px solid var(--gal-color-primary);
     }
     &:active {
       transform: translate3d(0, 1px, 0);
@@ -92,14 +92,6 @@
         var(--gal-color-primary-h),
         var(--gal-color-primary-s),
         calc(var(--gal-color-primary-l) - 5%)
-      );
-    }
-    &:focus-visible {
-      outline-color: hsla(
-        var(--gal-color-text-h),
-        var(--gal-color-text-s),
-        var(--gal-color-text-l),
-        0.5
       );
     }
   }
@@ -187,6 +179,16 @@
   .squaredRight {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+  }
+
+  .icon {
+    padding: 0 var(--gal-spacing);
+    &.rounded.squaredLeft {
+      padding-right: calc(var(--gal-spacing) * 1.5);
+    }
+    &.rounded.squaredRight {
+      padding-left: calc(var(--gal-spacing) * 1.5);
+    }
   }
 
   .success {

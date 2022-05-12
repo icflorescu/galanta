@@ -3,20 +3,19 @@
   import Group from '$lib/Group.svelte';
   import ChevronRight from '$lib/icons/ChevronRight.svelte';
   import Heart from '$lib/icons/Heart.svelte';
-
-  let theme: 'light' | 'dark' = 'light';
 </script>
 
 <h1>Welcome to GALANTA</h1>
 <h2>This is an H2</h2>
 <h3>This is an H3</h3>
-<Button on:click={() => (theme = theme === 'light' ? 'dark' : 'light')}>Change theme</Button>
 <h3>BUTTONS</h3>
 <h4>TYPES</h4>
 <Button variant="primary" type="submit">Submit</Button>
 <Button variant="primary" type="reset">Reset</Button>
 <Button variant="primary">Button</Button>
-<Button variant="primary" href="https://swapp.ro" target="_blank">Link</Button>
+<a href="https://swapp.ro" target="_blank">
+  <Button variant="primary">Inside link</Button>
+</a>
 <h4>VARIANTS</h4>
 <Button>Default</Button>
 <Button disabled>Disabled</Button>

@@ -1,11 +1,11 @@
 <script lang="ts">
   import Button from '$lib/Button.svelte';
-  import Bulb from '$lib/icons/Bulb.svelte';
-  import BulbOff from '$lib/icons/BulbOff.svelte';
-  import Eyeglass from '$lib/icons/Eyeglass.svelte';
-  import '$lib/normalize.css';
+  import '$lib/galanta.css';
+  import Group from '$lib/Group.svelte';
+  import MoodNervous from '$lib/icons/MoodNervous.svelte';
+  import Moon from '$lib/icons/Moon.svelte';
+  import Sun from '$lib/icons/Sun.svelte';
   import ThemeProvider from '$lib/ThemeProvider.svelte';
-  import './__layout.css';
 
   let theme: 'light' | 'dark' = 'light';
   let flashThemeTimeout: number | undefined;
@@ -28,7 +28,6 @@
     {
       name: 'dark',
       color: { background: '#282C34', text: '#ced4da' }
-      // color: { background: '#211720', text: 'yellow' }
     }
   ]}
   currentTheme={theme}
@@ -41,22 +40,22 @@
       <li><a href="/icons">Icons</a></li>
       <li><a href="/inputs">Inputs</a></li>
     </ul>
-    <div>
-      <Button on:click={() => (theme = theme === 'light' ? 'dark' : 'light')}>
+    <Group gap={1}>
+      <Button variant={'outline'} on:click={() => (theme = theme === 'light' ? 'dark' : 'light')}>
         <svelte:fragment slot="prefix">
           {#if theme === 'light'}
-            <BulbOff />
+            <Moon />
           {:else}
-            <Bulb />
+            <Sun />
           {/if}
         </svelte:fragment>
         Change theme
       </Button>
-      <Button on:click={handleFlashThemeClick}>
-        <Eyeglass slot="prefix" />
+      <Button variant="danger" on:click={handleFlashThemeClick}>
+        <MoodNervous slot="prefix" />
         Flash theme
       </Button>
-    </div>
+    </Group>
   </nav>
 </header>
 <main>
