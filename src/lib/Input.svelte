@@ -59,13 +59,14 @@
     | 'photo' = 'nope';
   export let autocorrect = false;
   export let spellcheck = false;
+  export let title: string | undefined = undefined;
   export let squared: true | 'left' | 'right' | undefined = undefined;
   export let rounded = false;
   export let required = false;
   export let disabled = false;
 </script>
 
-<label>
+<label {title}>
   {#if label}
     <span class="labelText" class:rounded>
       {label}

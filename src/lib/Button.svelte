@@ -10,6 +10,7 @@
     | 'danger'
     | undefined = undefined;
   export let icon = false;
+  export let title: string | undefined = undefined;
   export let type: 'submit' | 'reset' | undefined = undefined;
   export let uppercase = false;
   export let fullWidth = false;
@@ -29,8 +30,9 @@
   class:icon
   class:uppercase
   class:fullWidth
-  {disabled}
   {type}
+  {title}
+  {disabled}
   on:click
 >
   <slot name="prefix" />
