@@ -4,13 +4,11 @@
   import Search from '$lib/icons/Search.svelte';
   import User from '$lib/icons/User.svelte';
   import Input from '$lib/Input.svelte';
-
-  let email = 'email@gmail.com';
 </script>
 
 <h1>Inputs</h1>
 
-<form>
+<form on:submit|preventDefault={console.log}>
   <Group>
     <Input label="First name" placeholder="John" squared="right" required />
     <Button icon squared="left" variant="primary" mt="label-height">
@@ -25,11 +23,11 @@
     <User slot="prefix" />
   </Input>
   <Input
+    type="email"
     label="Email address"
     placeholder="me@gmail.com"
     required
     error="This field has an error"
-    bind:value={email}
   />
   <Button mt="label-height">Submit</Button>
   <div style:grid-column="1 / span 4">

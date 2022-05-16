@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { createEventDispatcher } from 'svelte';
+
   export let label: string | undefined = undefined;
   export let placeholder: string | undefined = undefined;
   export let autocapitalize: 'off' | 'sentences' | 'words' = 'off';
@@ -72,24 +74,19 @@
   export let mr: number | undefined = undefined;
   export let prefixWidth = 36;
   export let suffixWidth = 36;
-  export let type: 'text' | 'email' | 'tel' = 'text';
-  export let value = '';
+  export let type: 'text' | 'email' | 'tel' | 'number' = 'text';
+  export let value: string | number = '';
 
-  $: props = {
-    'class': 'input',
-    'class:warning': !!warning,
-    'class:danger': !!error,
-    placeholder,
-    autocapitalize,
-    autocomplete,
-    'autocorrect': autocorrect ? 'on' : undefined,
-    'spellcheck': (spellcheck ? 'true' : 'false') as boolean | 'true' | 'false' | null | undefined,
-    required,
-    disabled
+  const dispatch = createEventDispatcher<{ input: string | number }>();
+
+  const handleInput: svelte.JSX.FormEventHandler<HTMLInputElement> = (e) => {
+    value = (e.target as unknown as { value: string; valueAsNumber: number })[
+      type === 'number' ? 'valueAsNumber' : 'value'
+    ];
+    dispatch('input', value);
   };
 </script>
 
-<!-- svelte-ignore a11y-label-has-associated-control -->
 <label
   {title}
   class:rounded
@@ -117,34 +114,23 @@
       <slot name="suffix" />
     </span>
   {/if}
-  {#if type === 'email'}
-    <input
-      {...props}
-      style:padding-left={$$slots.prefix ? `${prefixWidth}px` : undefined}
-      style:padding-right={$$slots.suffix ? `${suffixWidth}px` : undefined}
-      type="email"
-      on:input
-      bind:value
-    />
-  {:else if type === 'tel'}
-    <input
-      {...props}
-      style:padding-left={$$slots.prefix ? `${prefixWidth}px` : undefined}
-      style:padding-right={$$slots.suffix ? `${suffixWidth}px` : undefined}
-      type="tel"
-      on:input
-      bind:value
-    />
-  {:else}
-    <input
-      {...props}
-      style:padding-left={$$slots.prefix ? `${prefixWidth}px` : undefined}
-      style:padding-right={$$slots.suffix ? `${suffixWidth}px` : undefined}
-      type="text"
-      on:input
-      bind:value
-    />
-  {/if}
+  <input
+    class="input"
+    class:warning={!!warning}
+    class:danger={!!error}
+    style:padding-left={$$slots.prefix ? `${prefixWidth}px` : undefined}
+    style:padding-right={$$slots.suffix ? `${suffixWidth}px` : undefined}
+    {type}
+    {placeholder}
+    {autocapitalize}
+    {autocomplete}
+    autocorrect={autocorrect ? 'on' : undefined}
+    spellcheck={spellcheck ? 'true' : 'false'}
+    {required}
+    {disabled}
+    {value}
+    on:input={handleInput}
+  />
   {#if warning}
     <span class="warning message">{warning}</span>
   {:else if error}
